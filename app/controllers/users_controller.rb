@@ -61,7 +61,10 @@ class UsersController < ApplicationController
   	
   	def admin_user
   		user = User.find(params[:id])
-  		redirect_to users_path, :flash => { :error => "Cannot destroy self." } if current_user?(user)
-  		redirect_to(root_path) unless current_user.admin? 
+  		if !current_user.admin?
+	  		redirect_to(root_path)
+  		else
+  			redirect_to users_path, :flash => { :error => "Cannot destroy self." } if current_user?(user)
+  		end
   	end
 end 
