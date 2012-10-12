@@ -9,12 +9,10 @@
 #  updated_at :datetime         not null
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+class Micropost < ActiveRecord::Base
+  attr_accessible :content
 
-one:
-  content: MyString
-  user_id: 1
-
-two:
-  content: MyString
-  user_id: 1
+	belongs_to :user
+	
+	default_scope :order => 'created_at DESC'
+end

@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   								:password, 
   								:password_confirmation
   
+  has_many :microposts, :dependent => :destroy
+  
   email_regex = /^([0-9a-zA-Z]([-+\.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-+\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/i
   
   validates :name,  :presence => true,
