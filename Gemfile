@@ -8,6 +8,7 @@ gem 'rails', '3.2.8'
 gem 'sqlite3'
 gem 'gravatar_image_tag', '0.1.0'
 gem "will_paginate", :git => "https://github.com/p7r/will_paginate.git", :branch => "rails3"
+gem 'rails3-jquery-autocomplete'
 
 group :development do
 	gem 'rspec-rails', '2.11.0'

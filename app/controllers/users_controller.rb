@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
+  autocomplete :user, :name, :full => true
+
   before_filter :authenticate, :except => [:show, :new, :create]
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user, 	 :only => [:destroy]
   
   def index
-  	@users = User.paginate(:page => params[:page])
+    @users = User.search(params[:search]).paginate(:page => params[:page])
   	@title = "All users"
   end
   
