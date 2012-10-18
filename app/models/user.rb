@@ -64,12 +64,16 @@ class User < ActiveRecord::Base
   
   def self.search(search)
     if search
-      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+      where('name LIKE ?', "%#{search}%")
     else
-      find(:all)
+      scoped
     end
   end
-  
+
+  def display_autocomplete
+    "#{self.name}"
+  end
+
   class << self
 		def User.authenticate(email, submitted_password)
 			user = find_by_email(email)

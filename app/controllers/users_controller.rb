@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  autocomplete :user, :name, :full => true
+  autocomplete :user, :name, :full => true, :display_value => :display_autocomplete
 
   before_filter :authenticate, :except => [:show, :new, :create]
   before_filter :correct_user, :only => [:edit, :update]

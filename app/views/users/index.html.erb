@@ -1,14 +1,8 @@
 <h1>All users</h1>
 
-<%= form_tag users_path, :method => 'get' do %>
+<%= form_tag users_path, :id => "users_search", :method => 'get' do %>
 <%= autocomplete_field_tag :search, params[:search], autocomplete_user_name_users_path, :size => 40 %>
 <%= submit_tag "Find User", :name => nil %>
 <% end %>
 
-<%= will_paginate %>
-
-<ul class="users">
-	<%= render @users %>
-</ul>
-
-<%= will_paginate %>
+<div id="show_users"><%= render "users" %></div>
